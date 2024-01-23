@@ -1,25 +1,23 @@
 <template>
-  <div class="flex items-center justify-center flex-col mt-5">
-    <h3 class="text-black font-bold text-2xl">Welcome, {{ name }}</h3>
-    <p class="text-black text-base">What do you need today?</p>
+  <div class="column q-pt-lg items-center" style="background: lightgrey; height: 100%;">
+    <p class="text-bold text-h5">Welcome, {{ name }}</p>
+    <p>What do you need today?</p>
 
-    <div class="flex gap-6 items-center flex-col mt-6">
-      <div v-for="(card, index) in modifiedCardData" :key="index">
-        <template></template>
-        <card-menu
+    <div class="column items-center q-mt-xs" style="gap: 2rem;">
+      <div v-for="(card, index) in modifiedCardData" :key="index" >
+        <CardMenu
           v-if="shouldRenderCard(card.link)"
           :tanggal="card.tanggal"
           :namaToko="card.namaToko"
           :iconName="card.iconName"
+          :jam="card.jam"
           :link="card.link"
         />
       </div>
     </div>
+    
   </div>
-
-  <div>
-    <q-icon name="support_agent" size="34px" />
-  </div>
+  <q-icon name="support_agent" size="xl" style="margin-top: -7rem; margin-left: 1rem;" />
 </template>
 
 <!-- <script setup lang="ts">
@@ -90,7 +88,7 @@
 
 <script lang="ts">
 import api from 'src/AxiosInterceptors';
-import CardMenu from 'src/components/CardMenu.vue';
+import CardMenu from 'src/components/CardMenu.vue'
 import { useRoute } from 'vue-router';
 
 export default {

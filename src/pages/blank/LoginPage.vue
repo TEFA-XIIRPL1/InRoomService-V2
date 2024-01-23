@@ -1,17 +1,17 @@
 <!-- eslint-disable @typescript-eslint/no-unused-vars -->
 <template>
-  <div class="flex items-center flex-col justify-center">
+  <div class="column justify-center" style="height: 90vh; margin: auto 0;">
     <img src="../../assets/img/logoLingian.png" alt="" />
     <div v-if="$route.path !== '/admin/login'">
-      <div v-if="!display" class="w-full flex justify-center items-center">
+      <div v-if="!display" class="column justify-center items-center" style="gap: 15px;">
         <q-select
           rounded
           outlined
           v-model="model"
           :options="options"
           label="Login As"
-          color="dark"
-          class="outline-none focus:bg-none active:bg-none w-full"
+          style="width: 100%;"
+          color="black"
           bg-color="white"
         />
 
@@ -21,13 +21,13 @@
           color="green"
           label="Next"
           text-color="dark"
-          class="px-8 mt-4"
           @click="handleNext"
         />
       </div>
     </div>
     <q-form
-      class="flex items-center flex-col mt-3 gap-4"
+      class="column"
+      style="gap: 15px;"
       @submit.prevent="login"
       v-if="display || $route.path === '/admin/login'"
     >
@@ -52,7 +52,6 @@
         for="email"
         placeholder="Enter Email Here"
         clear-icon="backspace"
-        class="md:w-80 w-60 drop-shadow-sm outline-none focus:bg-none active:bg-none"
       >
       </q-input>
       <q-input
@@ -64,7 +63,6 @@
         label="Password"
         for="password"
         type="password"
-        class="md:w-80 w-60 drop-shadow-sm"
       >
       </q-input>
       <q-btn
@@ -77,14 +75,14 @@
         color="green"
         label="login"
         style="padding-left: 5rem; padding-right: 5rem; width: 160px font-weight: 600;"
-        class="px-20 w-40 font-semibold items-center"
+        class="q-px-md text-bold items-center"
       >
       </q-btn>
     </q-form>
 
-    <p class="mt-8" v-if="$route.path === '/mitra'">
+    <p class="q-mt-md" v-if="$route.path === '/mitra'">
       Don't have an account?
-      <a class="text-[#D1CB2A]" href="/mitra/register">Create an account</a>
+      <a style="color: #D1CB2A" href="/mitra/register">Create an account</a>
     </p>
   </div>
 </template>

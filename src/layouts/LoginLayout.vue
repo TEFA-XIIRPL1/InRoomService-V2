@@ -80,7 +80,9 @@
 import { computed, ref, watch } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
 
-import { StreamBarcodeReader, ImageBarcodeReader } from 'vue-barcode-reader';
+import StreamBarcodeReader from 'vue-barcode-reader/src/components/StreamBarcodeReader.vue';
+import ImageBarcodeReader from 'vue-barcode-reader/src/components/ImageBarcodeReader.vue';
+
 const openCamera = ref(false);
 function toggleCamera() {
   openCamera.value = !openCamera.value;
@@ -107,7 +109,7 @@ function onLoad(Text: any) {
 <template>
   <div class="my-bg">
     <q-layout view="lHh lpR fFf" class="text-white">
-      <q-header class="bg-transparent border-0 border-transparent">
+      <q-header class="bg-transparent" style="border-width: 0px;">
         <q-toolbar class="flex items-center justify-end">
           <q-btn
             v-if="$route.path === '/login' && !openCamera"
@@ -117,16 +119,18 @@ function onLoad(Text: any) {
             @click="toggleCamera"
             icon="qr_code_scanner"
             class="text-white"
+            size="lg"
           />
         </q-toolbar>
       </q-header>
       <div
-        class="w-full h-screen z-10 flex flex-col items-center justify-center gap-4"
+        style="width: 100%; height: 100vh; z-index: 10; gap: 10px;"
+        class="column justify-center"
         v-if="openCamera"
       >
-        <h2 class="text-white text-base font-extrabold">
+        <p class="text-white text-h4 text-weight-bold text-center">
           Scan the QR code to access Lingin Hotel
-        </h2>
+        </p>
 
         <q-btn
           round
@@ -144,8 +148,8 @@ function onLoad(Text: any) {
         </StreamBarcodeReader>
         <!-- <ImageBarcodeReader @decode="onDecoded"></ImageBarcodeReader> -->
 
-        <div class="flex flex-col items-center justify-center">
-          <h3 class="text-white font-extrabold text-sm">Powered By:</h3>
+        <div class="column items-center justify-center">
+          <p class="text-white text-weight-bold text-h4">Powered By:</p>
           <img src="../assets/img/logoLingian.png" width="144" height="165" />
         </div>
       </div>
@@ -155,7 +159,7 @@ function onLoad(Text: any) {
       <p @click="turnCameraOff">kanjut</p>
       <p>{{ textInfo }}</p> -->
       <q-page-container
-        class="flex items-center justify-center h-fit py-10"
+        class="flex items-center justify-center h-fit q-py-md"
         :class="{ hidden: openCamera }"
       >
         <router-view />

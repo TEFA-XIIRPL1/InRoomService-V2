@@ -12,31 +12,49 @@ const props = defineProps({
 
 <template>
   <a
-    class="flex flex-col justify-center h-[130px] cursor-pointer w-[236px]"
+    class="row justify-center items-center"
+    style="max-width: 100%; text-decoration: none;" 
     :href="link"
   >
     <div
-      class="h-[130px] w-2 bg-[#0985BA] rounded-2xl border border-black -mr-2 z-10 shadow-md"
-    ></div>
-    <div class="py-3 w-[236px]">
-      <div
-        class="rounded-xl bg-white flex border border-black flex-row items-center px-3 justify-between gap-6 py-3 pl-5 shadow-md"
-      >
-        <div class="flex flex-col gap-2 items-start w-[110px]">
-          <p class="text-[#0660A1]">{{ tanggal }}</p>
-          <!-- elemen ini berdasarkan props -->
-          <h5 class="text-black">{{ namaToko }}</h5>
-          <!-- elemen ini berdasarkan props -->
-          <!-- <p class="text-[#808080]">{{ jam }}</p> -->
-          <!-- elemen ini berdasarkan props -->
-        </div>
-        <q-item-section>
-          <q-icon :name="iconName" class="text-black text-7xl" />
-          <!-- name nya berdasarkan props -->
-        </q-item-section>
-      </div>
-    </div>
+      class="shadow linecard"></div>
+    <q-card class="menu row items-center">
+      <q-card-section>
+        <p class="text-blue" >{{ tanggal }}</p>
+        <!-- elemen ini berdasarkan props -->
+        <p class="text-h6 text-black" >{{ namaToko }}</p>
+        <!-- elemen ini berdasarkan props -->
+        <p style="color: #808080;">{{ jam }}</p>
+        <!-- elemen ini berdasarkan props -->
+      </q-card-section>
+      <q-card-section>
+        <q-icon :name="iconName" class="text-black text-7xl" size="xl" />
+      </q-card-section>
+      <!-- name nya berdasarkan props -->
+    </q-card>
   </a>
 </template>
 
-<style lang="scss" scoped></style>
+<style scoped>
+* {
+  padding: 0;
+  margin: 0;
+}
+.shadow {
+  box-shadow: 0 4px 6px -1px rgb( 0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+}
+.linecard {
+  height: 120px; 
+  background: #0985BA; 
+  border-radius: 20px;  
+  border: 3px solid; 
+  margin-right: -5px; 
+  z-index: 10;
+}
+.menu {
+  width: 266px;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  padding: 1rem;
+}
+</style>

@@ -1,7 +1,7 @@
 <template>
-  <div class="justify-center mx-auto">
+  <div class="q-mx-auto">
     <q-layout view="lHh lpR fFf">
-      <q-header class="bg-[#069550] text-white py-1">
+      <q-header style="background: $primary">
         <q-toolbar>
           <q-toolbar-title class="text-capitalize font-semibold">
             <!-- {{ route.meta.label }} -->
@@ -9,7 +9,7 @@
               <img
                 src="../assets/img/lingian-logo-colored.png"
                 alt=""
-                class="opacity-100"
+                style="opacity: 100%:"
               />
             </q-avatar>
           </q-toolbar-title>
@@ -18,8 +18,9 @@
             <q-btn
               flat
               round
-              icon="o_notifications"
-              class="opacity-80 hover:opacity-100"
+              color="white"
+              icon="notifications"
+              class="header_links"
             />
           </router-link>
 
@@ -27,8 +28,9 @@
             <q-btn
               flat
               round
-              icon="o_mail"
-              class="opacity-80 hover:opacity-100"
+              color="white"
+              icon="mail"
+              class="header_links"
             />
           </router-link>
 
@@ -36,14 +38,15 @@
             <q-btn
               flat
               round
-              icon="o_account_circle"
-              class="opacity-80 hover:opacity-100"
+              color="white"
+              icon="account_circle"
+              class="header_links"
             />
           </router-link>
         </q-toolbar>
       </q-header>
 
-      <q-page-container>
+      <q-page-container style="height: 100vh;">
         <router-view />
       </q-page-container>
     </q-layout>
